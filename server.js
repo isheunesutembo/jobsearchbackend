@@ -4,6 +4,9 @@ const dotenv=require('dotenv')
 const userAuthRoute=require('./routes/userAuthRoute')
 const companyAuthRoute=require('./routes/companyAuthRoute')
 const categoryRoute=require('./routes/categoryRoute')
+const vacancyRoute=require('./routes/vacancyRoute')
+const favouriteRoute=require('./routes/favouriteRoute')
+const resumeRoute=require('./routes/resumeRoute')
 mongoose=require('mongoose')
 
 
@@ -16,5 +19,8 @@ app.use(express.urlencoded({extended:true}))
 app.use("/api/",userAuthRoute)
 app.use("/api/",companyAuthRoute)
 app.use("/api/categories",categoryRoute)
+app.use("/api/vacancies",vacancyRoute)
+app.use("/api/favourites",favouriteRoute)
+app.use("/api/resumes",resumeRoute)
 
 app.listen(process.env.PORT||6000,console.log(`app running on port ${process.env.PORT}`));
