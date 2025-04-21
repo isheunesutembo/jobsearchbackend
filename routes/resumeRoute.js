@@ -1,12 +1,10 @@
-const router=require("express").Router()
-const upload=require("../middleware/resumeupload")
-const resumeController=require("../controller/resumeController")
-const {verifyTokenAndAuthorization,authenticateToken}=require('../middleware/verifyToken')
+const router=require('express').Router()
+const resumeControllert=require('../controller/resumeController')
+const {verifyTokenAndAuthorization}=require('../middleware/verifyToken')
 
+router.post("/",verifyTokenAndAuthorization,resumeControllert.createResume)
+router.get("/:id",verifyTokenAndAuthorization,resumeControllert.getUserResume)
+router.patch("/:id",verifyTokenAndAuthorization,resumeControllert.updateResume)
+router.delete("/:id",verifyTokenAndAuthorization,resumeControllert.deleteResume)
 
-router.post("/",verifyTokenAndAuthorization,resumeController.uploadResume)
-router.get("/:id",verifyTokenAndAuthorization,resumeController.getUserResume)
-router.patch("/:id",verifyTokenAndAuthorization,resumeController.updateResume)
-router.delete("/:id",verifyTokenAndAuthorization,resumeController.deleteResume)
-
-module.exports=router;
+module.exports = router;
