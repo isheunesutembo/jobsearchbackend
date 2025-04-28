@@ -8,6 +8,10 @@ const vacancyRoute=require('./routes/vacancyRoute')
 const favouriteRoute=require('./routes/favouriteRoute')
 const resumeRoute=require('./routes/resumeRoute')
 const applicationRoute=require('./routes/applicationRoute')
+const userRoute=require('./routes/userRoute')
+
+
+
 mongoose=require('mongoose')
 
 
@@ -24,5 +28,7 @@ app.use("/api/vacancies",vacancyRoute)
 app.use("/api/favourites",favouriteRoute)
 app.use("/api/resumes",resumeRoute)
 app.use("/api/applications",applicationRoute)
+app.use("/api/users",userRoute)
+
 
 app.listen(process.env.PORT||6000,console.log(`app running on port ${process.env.PORT}`));
