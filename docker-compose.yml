@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+     build: .
+     container_name: jobboardbackend
+     ports:
+      - "6013:6013"
+     environment:
+      - MONGO_URL=mongodb+srv://isheunesu48:xeNUW1oMF0Rizy6e@cluster0obboard.s3qnw.mongodb.net/
+     volumes:
+        - .:/app
+     depends_on:
+       - mongo_db
+     restart: unless-stopped
+
+  mongo_db:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+   mongo-data:

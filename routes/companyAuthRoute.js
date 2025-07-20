@@ -1,7 +1,9 @@
 const router=require('express').Router()
 const companyAuthController=require('../controller/companyAuthController')
-const { loginLimiter } = require('../middleware/rate_limit')
-router.post("/registerCompany",loginLimiter,companyAuthController.createCompany)
-router.post('/logInCompany',loginLimiter,companyAuthController.logInCompany)
+const { logInLimiter } = require('../middleware/ratelimiting')
+
+
+router.post("/registerCompany",logInLimiter,companyAuthController.createCompany)
+router.post('/logInCompany',logInLimiter,companyAuthController.logInCompany)
 
 module.exports =router

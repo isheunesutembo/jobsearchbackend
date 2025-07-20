@@ -10,14 +10,12 @@ const resumeRoute=require('./routes/resumeRoute')
 const applicationRoute=require('./routes/applicationRoute')
 const userRoute=require('./routes/userRoute')
 const companyRoute=require('./routes/companyRoute')
-
-
-
 mongoose=require('mongoose')
-
-
 dotenv.config()
-mongoose.connect(process.env.DB).then(()=>console.log('connected to database'))
+mongoose.connect("mongodb+srv://isheunesu48:xeNUW1oMF0Rizy6e@cluster0obboard.s3qnw.mongodb.net/",{
+    useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(()=>console.log('connected to database'))
 .catch((err)=>console.log(err))
 
 app.use(express.json())
